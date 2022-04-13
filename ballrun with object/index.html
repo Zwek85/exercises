@@ -15,6 +15,11 @@
       position: absolute;
       border-radius: 50%;
     }
+    .ball2 {
+      position: absolute;
+      border-radius: 50%;
+    }
+
     .controls {
       position: absolute;
       left: 50px;
@@ -26,11 +31,18 @@
   <body>
     <div class="ballpit">
       <div class="ball"></div>
+      <div class="ball2"></div>
     </div>
     <div class="controls">
       <button onclick="constructBall()" class="makeBall">Make a Ball</button>
       <button onclick="move()" class="makeBall">Move Ball</button>
+      <button onclick="constructBall2()" class="makeBall2">Make a Ball2</button>
+      <button onclick="move2()" class="makeBall2">Move a Ball2</button>
+      X:<input class="xvelocity">
+      Y:<input class="yvelocity">
     </div>
+
+
     <script src="ballrun.js"></script>
   </body>
 </html>
