@@ -59,11 +59,13 @@ function constructBall() {
 
   // use setInterval to run the move function every 500ms
   // and then delete the "Move" button.
-
+setInterval(move,500)
 }
 
 function move() {
-  setPosition();
+  // setInterval(setPosition, 500);
+
+setPosition();
   drawPosition();
 }
 
@@ -75,7 +77,7 @@ function setPosition() {
   }
 
   // Part 2: use the helper function to get the "wrapped" position instead of just the fixed position.
-  // ballObject.position = helpers.boundary().getWrappedPosition(ballObject.position);
+  ballObject.position = helpers.boundary().getWrappedPosition(ballObject.position);
 }
 
 function drawPosition() {
