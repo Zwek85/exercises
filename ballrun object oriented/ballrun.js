@@ -1,6 +1,7 @@
 let allBalls = [];
 let moveAllBalls = () => {
   allBalls.forEach((ball) => {
+    ball.move();
     // This line will be run once on every single ball that is in `allBalls`.
     // Call the `move` method on the ball. In this context the ball is `ball`.
   });
@@ -50,6 +51,20 @@ let helpers = new Helpers();
 
 class Ball {
   constructor() {
+
+  // Add defaults to the ballObject
+  this.radius = helpers.getRandomNumber(30,50);
+  this.position = ({x: 250, y: 250});
+  this.color = helpers.getRandomColor();
+  this.velocity = ({x:helpers.getRandomNumber(-10,30), y:helpers.getRandomNumber(-20,40)});
+  this.domElement = this.buildBallDOMElement();
+
+  // Add the following starting styles to the domElement:
+  // use setInterval to run the move function every 500ms
+  // and then delete the "Move" button.
+
+}
+
     // This is the constructor method. It has the same job as the `constructBall`
     // function from the last lesson.
     //   1. Copy over the content of `constructBall` into this method.
@@ -58,17 +73,18 @@ class Ball {
     //       this line once:
     //       ballObject.domElement =  document.querySelector(".ball");
 
-  }
-
   move = () => {
     // Create newPos object and set the X  and Y values of this to velocity plus
     // the current position.
     let newPos = {
-      x: 0,// instead of 0, this should be the x velocity plus the x position
-      y: 0,// instead of 0, this should be the y velocity plus the y position
+    x :this.velocity.x + this.position.x,// instead of 0, this should be the x velocity plus the x position
+    y :this.velocity.y + this.position.y// instead of 0, this should be the y velocity plus the y position
+
     }
     this.setPosition(newPos);
     this.drawPosition(newPos);
+
+
   }
 
   setPosition = (position) => {
@@ -95,8 +111,9 @@ class Ball {
 }
 
 let makeBall = () => {
+  allBalls.push(new Ball())
   // make a new instance of the Ball class, and add it to the `allBalls` array.
 }
 
 // This is time:
-//setInterval(moveAllBalls, 100);
+setInterval(moveAllBalls, 100);
